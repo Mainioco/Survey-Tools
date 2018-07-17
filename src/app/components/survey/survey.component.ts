@@ -1,21 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Injector } from '@angular/core';
 import * as Survey from 'survey-angular';
 import { SurveyService } from '../../services/survey.service';
 
 @Component({
-  selector: 'app-survey',
+  selector: 'mainio-survey',
   templateUrl: './survey.component.html',
   styleUrls: ['./survey.component.scss']
 })
 export class SurveyComponent implements OnInit {
-  @Input() json: any;
+  @Input() survey_id: any;
+  @Input() user_id: string;
 
-  constructor(private surveyService: SurveyService) {}
+  constructor(private surveyService: SurveyService) {
 
+  }
 
   ngOnInit() {
-    const surveyModel = new Survey.Model(this.json);
-    surveyModel.onComplete.add(this.surveyService.sendSurveyToServer);
-    Survey.SurveyNG.render('surveyElement', { model: surveyModel });
+    this.surveyService.getSurvey(this.survey_id).subscribe(survey_json => {
+      const surveyModel = new Survey.Model(survey_json[0]);
+      surveyModel.onComplete.add(result => {
+        this.surveyService.sendSurveyToServer(result, this.user_id);
+      });
+      Survey.SurveyNG.render('surveyElement', { model: surveyModel });
+    });
   }
 }
