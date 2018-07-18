@@ -120,6 +120,86 @@
           }
         }
       }
+    },
+    "mainio-survey": {
+      "root": "projects/mainio-survey",
+      "sourceRoot": "projects/mainio-survey/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mainio-survey/tsconfig.lib.json",
+            "project": "projects/mainio-survey/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/mainio-survey/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mainio-survey/src/test.ts",
+            "tsConfig": "projects/mainio-survey/tsconfig.spec.json",
+            "karmaConfig": "projects/mainio-survey/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mainio-survey/tsconfig.lib.json",
+              "projects/mainio-survey/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "mainio-survey": {
+      "root": "projects/mainio-survey",
+      "sourceRoot": "projects/mainio-survey/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mainio-survey/tsconfig.lib.json",
+            "project": "projects/mainio-survey/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/mainio-survey/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mainio-survey/src/test.ts",
+            "tsConfig": "projects/mainio-survey/tsconfig.spec.json",
+            "karmaConfig": "projects/mainio-survey/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mainio-survey/tsconfig.lib.json",
+              "projects/mainio-survey/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "mainio-surveytool"
