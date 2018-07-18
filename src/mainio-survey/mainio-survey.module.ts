@@ -1,3 +1,4 @@
+import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,7 +12,7 @@ import { MainioSurveyComponent } from './components/mainio-survey/mainio-survey.
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   entryComponents: [MainioSurveyComponent],
-  exports: [MainioSurveyComponent],
+  exports: [MainioSurveyComponent]
 })
 export class MainioSurveyModule {
   constructor(injector: Injector) {

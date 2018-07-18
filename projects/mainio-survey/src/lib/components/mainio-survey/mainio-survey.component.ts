@@ -5,7 +5,7 @@ import { SurveyService } from '../../services/survey.service';
 @Component({
   selector: 'mainio-survey',
   templateUrl: './mainio-survey.component.html',
-  styleUrls: ['./mainio-survey.component.scss']
+  styleUrls: ['./mainio-survey.component.css']
 })
 export class MainioSurveyComponent implements AfterViewInit {
   @Input() survey_id: any;
