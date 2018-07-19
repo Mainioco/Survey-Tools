@@ -3,13 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
-import { MainioSurveyComponent } from './components/mainio-survey/mainio-survey.component';
+import {
+  MainioSurveyComponent,
+  MainioSurveyData
+} from './components/mainio-survey/mainio-survey.component';
 
 @NgModule({
   declarations: [MainioSurveyComponent],
   imports: [BrowserModule, HttpClientModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    MainioSurveyData,
+    { provide: MainioSurveyData, useValue: window['MainioSurveyData'] }
+  ],
   entryComponents: [MainioSurveyComponent],
   exports: [MainioSurveyComponent]
 })
