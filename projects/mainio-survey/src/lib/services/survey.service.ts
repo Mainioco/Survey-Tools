@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class SurveyService {
   constructor(private http: HttpClient) {}
 
-  getSurvey(id: number): Observable<any> {
-    return this.http.get<string[]>(`./assets/mock/survey-${id}.json`);
+  getSurvey(api: string, id: any): Observable<any> {
+    return this.http.get<string[]>(`${api}/${id}.json`);
   }
 
   sendSurveyToServer(survey, user_id) {
