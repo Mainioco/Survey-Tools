@@ -10,10 +10,12 @@ export class SurveyService {
   constructor(private http: HttpClient) {}
 
   getSurvey(api: string, id: any): Observable<any> {
-    return this.http.get<string[]>(`${api}/${id}.json`);
+    return this.http.get<string[]>(`${api}/${id}.json`); // REMOVE .JSON IF NECESSARY
   }
 
-  sendSurveyToServer(survey, user_id) {
-    console.log({ id: uuid(), user_id: user_id, ...survey.data });
+  sendSurveyToServer(survey, user_id = 0) {
+    // POST TO SERVER HERE
+    // ...
+    console.log({ id: uuid(), user_id, ...survey.data });
   }
 }

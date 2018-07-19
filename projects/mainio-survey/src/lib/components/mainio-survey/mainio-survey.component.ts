@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
+import { Component, Input, AfterViewInit, OnInit } from '@angular/core';
 import * as Survey from 'survey-angular';
 import { SurveyService } from '../../services/survey.service';
 
@@ -7,33 +7,35 @@ import { SurveyService } from '../../services/survey.service';
   templateUrl: './mainio-survey.component.html',
   styleUrls: ['./mainio-survey.component.css']
 })
-export class MainioSurveyComponent implements AfterViewInit {
+export class MainioSurveyComponent implements OnInit {
   @Input() api: string;
   @Input() survey_id: any;
   @Input() user_id: string;
+  gotSurveyData = false;
 
   constructor(
     private surveyService: SurveyService,
     private mainioSurveyData: MainioSurveyData
   ) {}
 
-  ngAfterViewInit(): void {
-    let api, survey_id, user_id;
-
+  ngOnInit(): void {
     if (this.api && this.survey_id && this.user_id) {
-      console.log('Got survey data from component inputs.');
-      api = this.api;
-      survey_id = this.survey_id;
-      user_id = this.user_id;
-      this.getSurvey(api, survey_id, user_id);
-    } else if (this.mainioSurveyData) {
-      console.log('Got survey data from window.MainioSurveyData.');
-      api = this.mainioSurveyData.api;
-      survey_id = this.mainioSurveyData.survey_id;
-      user_id = this.mainioSurveyData.user_id;
-      this.getSurvey(api, survey_id, user_id);
+      this.gotSurveyData = true;
+      this.getSurvey(this.api, this.survey_id, this.user_id);
+    } else if (
+      this.mainioSurveyData &&
+      this.mainioSurveyData.api &&
+      this.mainioSurveyData.survey_id &&
+      this.mainioSurveyData.user_id
+    ) {
+      this.gotSurveyData = true;
+      this.getSurvey(
+        this.mainioSurveyData.api,
+        this.mainioSurveyData.survey_id,
+        this.mainioSurveyData.user_id
+      );
     } else {
-      console.error('Survey data was incomplete.');
+      this.gotSurveyData = false;
     }
   }
 
