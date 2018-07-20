@@ -6,7 +6,6 @@
     "start": "ng serve",
     "build": "ng build",
     "build-lib": "ng build mainio-survey --prod",
-    "build-gulp": "rm -rf dist && ng build --prod --build-optimizer && mv dist/mainio-surveytool/polyfills.js dist/mainio-surveytool/apolyfills.js && gulp && cp index.html dist/gulp",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -46,9 +45,6 @@
     "@types/knockout": "^3.4.58",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
