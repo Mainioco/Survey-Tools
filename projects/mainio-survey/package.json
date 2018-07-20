@@ -1,12 +1,34 @@
 {
   "name": "mainio-survey",
   "version": "0.0.1",
+  "contributors": [
+    {
+      "name": "Mika Lakanen",
+      "url": "http://www.mulperi.net"
+    },
+    {
+      "name": "Eelis Piirilä",
+      "url": "https://github.com/Immanuel23"
+    }
+  ],
+  "license": "MIT",
+  "description": "Angular 6 web component application that provides ease of integration of SurveyJS formatted surveys to any app and website",
+  "homepage": "https://github.com/Mainioco/Survey-Tools",
+  "bugs": {
+    "email": "tutkimus@mainio.co",
+    "url": "https://github.com/Mainioco/Survey-Tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mainioco/Survey-Tools.git"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
     "survey-angular": "^1.0.32",
     "@angular/elements": "^6.0.9",
     "@webcomponents/custom-elements": "^1.1.2",
-    "@angular/cdk": "6.3.1"
+    "@angular/cdk": "6.3.1",
+    "uuid": "^3.3.2"
   }
 }

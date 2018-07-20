@@ -29,10 +29,9 @@ export class MainioSurveyComponent implements OnInit {
       this.mainioSurveyData.user_id
     ) {
       this.gotSurveyData = true;
+      const {api, survey_id, user_id} = this.mainioSurveyData;
       this.getSurvey(
-        this.mainioSurveyData.api,
-        this.mainioSurveyData.survey_id,
-        this.mainioSurveyData.user_id
+       api, survey_id, user_id
       );
     } else {
       this.gotSurveyData = false;
