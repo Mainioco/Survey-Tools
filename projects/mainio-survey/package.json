@@ -23,12 +23,12 @@
     "url": "https://github.com/Mainioco/Survey-Tools.git"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
-    "survey-angular": "^1.0.32",
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/elements": "^6.0.9",
     "@webcomponents/custom-elements": "^1.1.2",
     "@angular/cdk": "6.3.1",
+    "survey-angular": "^1.0.32",
     "uuid": "^3.3.2"
   }
 }
