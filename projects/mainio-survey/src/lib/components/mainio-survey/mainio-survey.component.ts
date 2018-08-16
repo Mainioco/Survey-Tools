@@ -1,16 +1,19 @@
-import { Component, Input, AfterViewInit, OnInit } from '@angular/core';
-import * as Survey from 'survey-angular';
-import { SurveyService } from '../../services/survey.service';
+import { Component, Input, AfterViewInit, OnInit } from "@angular/core";
+import * as Survey from "survey-angular";
+import { SurveyService } from "../../services/survey.service";
 
 @Component({
-  selector: 'mainio-survey',
-  templateUrl: './mainio-survey.component.html',
-  styleUrls: ['./mainio-survey.component.css']
+  selector: "mainio-survey",
+  templateUrl: "./mainio-survey.component.html",
+  styleUrls: ["./mainio-survey.component.css"]
 })
 export class MainioSurveyComponent implements OnInit {
-  @Input() api: string;
-  @Input() survey_id: any;
-  @Input() user_id: string;
+  @Input()
+  api: string;
+  @Input()
+  survey_id: any;
+  @Input()
+  user_id: string;
   gotSurveyData = false;
 
   constructor(
@@ -19,6 +22,12 @@ export class MainioSurveyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(
+      "Component loaded with values ",
+      this.api,
+      this.survey_id,
+      this.user_id
+    );
     if (this.api && this.survey_id && this.user_id) {
       this.gotSurveyData = true;
       this.getSurvey(this.api, this.survey_id, this.user_id);
@@ -29,10 +38,8 @@ export class MainioSurveyComponent implements OnInit {
       this.mainioSurveyData.user_id
     ) {
       this.gotSurveyData = true;
-      const {api, survey_id, user_id} = this.mainioSurveyData;
-      this.getSurvey(
-       api, survey_id, user_id
-      );
+      const { api, survey_id, user_id } = this.mainioSurveyData;
+      this.getSurvey(api, survey_id, user_id);
     } else {
       this.gotSurveyData = false;
     }
@@ -44,7 +51,7 @@ export class MainioSurveyComponent implements OnInit {
       surveyModel.onComplete.add(result => {
         this.surveyService.sendSurveyToServer(result, user_id);
       });
-      Survey.SurveyNG.render('surveyElement', { model: surveyModel });
+      Survey.SurveyNG.render("surveyElement", { model: surveyModel });
     });
   }
 }
