@@ -14,6 +14,8 @@ export class MainioSurveyComponent implements OnInit {
   survey_id: any;
   @Input()
   user_id: string;
+  @Input()
+  loadedModel: Survey.Model;
   gotSurveyData = false;
 
   constructor(
@@ -39,7 +41,8 @@ export class MainioSurveyComponent implements OnInit {
     ) {
       this.gotSurveyData = true;
       const { api, survey_id, user_id } = this.mainioSurveyData;
-      this.getSurvey(api, survey_id, user_id);
+      if (!this.loadedModel) this.getSurvey(api, survey_id, user_id);
+      else Survey.SurveyNG.render("surveyElement", { model: this.loadedModel });
     } else {
       this.gotSurveyData = false;
     }
