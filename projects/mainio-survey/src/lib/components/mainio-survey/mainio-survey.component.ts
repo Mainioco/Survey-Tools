@@ -1,4 +1,10 @@
-import { Component, Input, AfterViewInit, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  AfterViewInit,
+  OnInit,
+  OnChanges
+} from "@angular/core";
 import * as Survey from "survey-angular";
 import { SurveyService } from "../../services/survey.service";
 
@@ -7,7 +13,7 @@ import { SurveyService } from "../../services/survey.service";
   templateUrl: "./mainio-survey.component.html",
   styleUrls: ["./mainio-survey.component.css"]
 })
-export class MainioSurveyComponent implements OnInit {
+export class MainioSurveyComponent implements OnInit, OnChanges {
   @Input()
   api: string;
   @Input()
@@ -24,12 +30,13 @@ export class MainioSurveyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(
-      "Component loaded with values ",
-      this.api,
-      this.survey_id,
-      this.user_id
-    );
+    this.handleDisplayData();
+  }
+  ngOnChanges() {
+    this.handleDisplayData();
+  }
+
+  handleDisplayData() {
     if (this.api && this.survey_id && this.user_id) {
       this.gotSurveyData = true;
       this.getSurvey(this.api, this.survey_id, this.user_id);
@@ -47,7 +54,6 @@ export class MainioSurveyComponent implements OnInit {
       this.gotSurveyData = false;
     }
   }
-
   getSurvey(api, survey_id, user_id) {
     this.surveyService.getSurvey(api, survey_id).subscribe(survey_json => {
       const surveyModel = new Survey.Model(survey_json[0]);
