@@ -52,6 +52,7 @@ export class MainioSurveyComponent implements OnInit, OnChanges {
       else Survey.SurveyNG.render("surveyElement", { model: this.loadedModel });
     } else if (this.loadedModel) {
       Survey.SurveyNG.render("surveyElement", { model: this.loadedModel });
+      this.gotSurveyData = true;
     } else {
       this.gotSurveyData = false;
     }
