@@ -3,4 +3,4 @@
  */
 
 export * from "./lib/mainio-survey.module";
-export * from "./lib/services/survey.service";
+export { SurveyService, IPostSurvey } from "./lib/services/survey.service";
